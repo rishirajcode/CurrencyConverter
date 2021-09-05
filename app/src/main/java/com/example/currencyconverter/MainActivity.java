@@ -1,40 +1,31 @@
-package com.example.currencyconverter;
+package com.myappcompany.rob.currencyconverter;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
-
-import com.google.android.filament.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    //    public void currency(View view){
-        public void currencyExchange() {
-            currencyExchange();
-        }
+    public void currencyExchange(View view) {
 
-    //    public void currency(View view){
-        public void currencyExchange (View view)   {
+        Log.i("Info", "Button pressed");
 
-        Log.i("info", "Button Pressed");
+        EditText editText = (EditText) findViewById(R.id.editText);
 
-        EditText editText = (EditText) findViewById(R.id.editvalue);
+        String amountInPounds = editText.getText().toString();
 
-        String amountInRs = editText.getText().toString();
+        double amountInPoundsDouble = Double.parseDouble(amountInPounds);
 
-        double amountInRsDouble = Double.parseDouble(amountInRs);
+        double amountInDollarsDouble = amountInPoundsDouble * 1.3;
 
-        double amountInDollarDouble = 75 * amountInRsDouble ;
+        String amountInDollarsString = String.format("%.2f", amountInDollarsDouble);
 
-        String amountInRsString = Double.toString(amountInDollarDouble);
-
-        Log.i("Info", editText.getText().toString());
-
+        Toast.makeText(this, "£" + amountInPounds + " is $" + amountInDollarsString, Toast.LENGTH_LONG).show();
 
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
